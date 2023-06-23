@@ -1,0 +1,15 @@
+import PyPDF2
+
+# Open PDF file
+with open("input.pdf", "rb") as f:
+    # Create PDF reader object
+    pdf_reader = PyPDF2.PdfFileReader(f)
+    
+    # Extract text from all pages
+    text = ""
+    for i in range(pdf_reader.getNumPages()):
+        page = pdf_reader.getPage(i)
+        text += page.extractText()
+    
+    # Extract tables from text (requires more manual processing)
+    # ...
